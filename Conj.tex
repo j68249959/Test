@@ -1,0 +1,372 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage[ruled]{algorithm2e}
+
+\setlength{\oddsidemargin}{10mm}
+\setlength{\marginparwidth}{0mm}
+\setlength{\marginparsep}{0mm}
+\setlength{\topmargin}{0mm}
+\setlength{\topskip}{0mm}
+
+\setlength{\textwidth}{140mm}
+\setlength{\textheight}{210mm}
+
+
+\setlength{\oddsidemargin}{.25in} \setlength{\evensidemargin}{.25in}
+\setlength{\textheight}{8.5 in} \setlength{\textwidth}{6 in}
+\setlength{\topmargin}{-.25 in} \setlength{\baselineskip}{19pt}
+\setlength{\marginparwidth}{0.9in} \setlength{\marginparsep}{3pt}
+
+\setlength{\parskip}{2pt}
+
+\newcommand {\empstr} {\Lambda}
+
+
+\newcommand {\qcf}[1] {{\sf{#1}}}
+
+\newcommand {\qc}[1] {{\sf{#1}}}
+\def\>{\ensuremath{\rangle}}
+\def\<{\ensuremath{\langle}}
+\def\sl {\ensuremath{\llparenthesis}}
+\def\sr{\ensuremath{\rrparenthesis}}
+\def\-{\ensuremath{\textrm{-}}}
+\def\ott{t}
+\def\otu{u}
+\def\ots{s}
+
+\def\comm{\ensuremath{\leftrightarrow^*}}
+\def\reach{\ensuremath{\rightarrow^*}}
+
+
+\def\ctp{P}
+\def\ctq{Q}
+%\def\fdmu{\Delta}
+%\def\fdnu{\Xi}
+%\def\fdomega{\Theta}
+
+\def\fdmu{\Delta}
+\def\fdnu{\dnu}
+\def\fdomega{\domega}
+
+\def\dmu{\mu}
+\def\dnu{\nu}
+\def\domega{\omega}
+
+\def\fpi{\widehat{\pi}}
+\def\h{\ensuremath{\mathcal{H}}}
+\def\p{\ensuremath{\mathcal{P}}}
+\def\l{\ensuremath{\mathcal{L}}}
+\def\g{\ensuremath{\mathcal{G}}}
+\def\lh{\ensuremath{\mathcal{L(H)}}}
+\def\dh{\ensuremath{\mathcal{D(H})}}
+\def\q{\bold Q}
+\def\Q{\ensuremath{\mathbb Q}}
+\def\P{\ensuremath{\mathbb P}}
+\def\SO{\ensuremath{\mathcal{SO}}}
+\def\HP{\ensuremath{\mathcal{HP}}}
+\def\hpe{\ensuremath{\mathcal{\e}}}
+
+\def\r{\ensuremath{\mathcal{R}}}
+\def\R{\ensuremath{\mathfrak{R}}}
+\def\f{\ensuremath{\mathcal{F}}}
+\def\m{\ensuremath{\mathcal{M}}}
+\def\u{\ensuremath{\mathcal{U}}}
+\def\k{\ensuremath{\mathcal{K}}}
+\def\K{\ensuremath{\mathfrak{K}}}
+\def\S{\ensuremath{\mathfrak{S}}}
+\def\s{\ensuremath{\mathcal{S}}}
+\def\t{\ensuremath{\mathcal{T}}}
+\def\u{\ensuremath{\mathcal{U}}}
+\def\U{\ensuremath{\mathfrak{U}}}
+\def\L{\ensuremath{\mathfrak{L}}}
+\def\x{\ensuremath{\mathcal{X}}}
+\def\y{\ensuremath{\mathcal{Y}}}
+\def\z{\ensuremath{\mathcal{Z}}}
+\def\v{\ensuremath{\mathcal{V}}}
+
+\def\st{\ensuremath{\mathfrak{t}}}
+\def\su{\ensuremath{\mathfrak{u}}}
+\def\ss{\ensuremath{\mathfrak{s}}}
+
+
+\def\ra{\ensuremath{\rightarrow}}
+\def\a{\ensuremath{\mathcal{A}}}
+\def\b{\ensuremath{\mathcal{B}}}
+\def\c{\ensuremath{\mathcal{C}}}
+
+\def\e{\ensuremath{\mathcal{E}}}
+\def\f{\ensuremath{\mathcal{F}}}
+\def\l{\ensuremath{\mathcal{L}}}
+\def\X{\mbox{\bf{X}}}
+\def\N{\mathbb{N}}
+\def\sreal{\mathbb{R}}
+
+\newcommand {\while} {\mbox{\bf{while}}}
+\newcommand {\ddo} {\mbox{\bf{do}}}
+\newcommand {\pend} {\mbox{\bf{end}}}
+
+
+\def\d{\ensuremath{\mathcal{D}}}
+\def\dh{\ensuremath{\mathcal{D(H)}}}
+\def\lh{\ensuremath{\mathcal{L(H)}}}
+\def\le{\ensuremath{\sqsubseteq}}
+\def\ge{\ensuremath{\sqsupseteq}}
+\def\eval{\ensuremath{{\psi}}}
+\def\aeq{\ensuremath{{\ \equiv\ }}}
+%\def\snt{\ensuremath{\sl \ott, \e\sr}}
+\def\osnt{\ensuremath{\sl \ott, \e\sr}}
+\def\snt{\st}
+\def\snti{\ensuremath{\sl \ott_i, \e_i\sr}}
+%\def\snu{\ensuremath{\sl \otu, \f\sr}}
+\def\osnu{\ensuremath{\sl \otu, \f\sr}}
+\def\osns{\ensuremath{\sl s, \g\sr}}
+\def\snu{\su}
+\def\fdist{\ensuremath{\d ist_\h}}
+\def\dist{\ensuremath{Dist}}
+\def\wtx{\ensuremath{\widetilde{X}}}
+
+\def\bv{1{v}}
+\def\bV{\mathbf{V}}
+\def\bf{\mathbf{f}}
+\def\bw{\mathbf{w}}
+\def\zo{\mathbf{0}}
+\def\bX{\mathbf{X}}
+\def\bDelta{\mathbf{\Delta}}
+\def\bdelta{\boldsymbol{\delta}}
+\def\next{\mathcal{X}}
+\def\until{\mathcal{U}}
+
+\def\leqI{\ensuremath{\mathcal{SI}(\h)}}
+\def\leqIq{\ensuremath{\mathcal{SI}_{\eqsim}(\h)}}
+\def\oact{\ensuremath{\alpha}}
+\def\oactb{\ensuremath{\beta}}
+\def\sact{\ensuremath{\gamma}}
+\def\fpi{\ensuremath{\widehat{\pi}}}
+\newcommand{\supp}[1]{\ensuremath{\lceil{#1}\rceil}}
+\newcommand{\support}[1]{\lceil{#1}\rceil}
+
+\newcommand{\abis}{\stackrel{\lambda}\approx}
+\newcommand{\abisa}[1]{\stackrel{#1}\approx}
+\newcommand {\qbit} {\mbox{\bf{new}}}
+\newcommand {\nil} {\mbox{\bf{nil}}}
+\newcommand {\iif} {\mbox{\bf{if}}}
+\newcommand {\then} {\mbox{\bf{then}}}
+\newcommand {\eelse} {\mbox{\bf{else}}}
+\newcommand {\true} {\mbox{\texttt{true}}}
+\newcommand {\false} {\mbox{\texttt{false}}}
+\renewcommand{\theenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumi}{\theenumi}
+\newcommand{\tr}{{\rm tr}}
+\newcommand{\rto}[1]{\stackrel{#1}\rightarrow}
+\newcommand{\orto}[1]{\stackrel{#1}\longrightarrow}
+\newcommand{\srto}[1]{\stackrel{#1}\longmapsto}
+\newcommand{\sRto}[1]{\stackrel{#1}\Longmapsto}
+
+
+%\newcommand{\rrto}[1]{\stackrel{#1}\hookrightarrow}
+\newcommand{\rrto}[1]{\xhookrightarrow{#1}}
+%\newcommand{\con}[2]{{#1}\triangleleft b \triangleright {#2}}
+\newcommand{\con}[3]{\iif\ {#1}\ \then\ {#2}\ \eelse\ {#3}}
+
+\newcommand{\Rto}[1]{\stackrel{#1}\Longrightarrow}
+\newcommand{\nrto}[1]{\stackrel{#1}\nrightarrow}
+
+\newcommand{\Rhto}[1]{\stackrel{\widehat{#1}}\Longrightarrow}
+\newcommand{\define}{\stackrel{definition}=}
+\newcommand{\rsim}{\simeq}
+\newcommand{\obis}{\approx_o}
+\newcommand{\sbis}{\ \dot\approx\ } 
+\newcommand{\stbis}{\ \dot\sim\ } 
+\newcommand{\nssbis}{\ \dot\nsim\ } 
+
+\newcommand{\bis}{\sim}
+\newcommand{\rat}{\rightarrowtail}
+\newcommand{\wbis}{\approx}
+\newcommand{\id}{\mathcal{I}}
+\newcommand{\stet}[1]{\{ {#1}  \}  } % singleton set
+%\newcommand{\ar}[1]{\mathrel{\stackrel{#1}{\longrightarrow}}}
+\newcommand{\unw}[1]{\stackrel{{#1}}\sim}
+\newcommand{\rma}[1]{\stackrel{{#1}}\approx}
+
+\def\step{\textsf{step}}
+\def\obs{\textsf{obs}}
+\def\dom{\textsf{dom}}
+\def\purge{\textsf{ipurge}}
+\def\source{\textsf{sources}}
+\def\cnt{\textsf{cnt}}
+\def\read{\textsf{read}}
+\def\alter{\textsf{alter}}
+\def\dirac#1{\delta_{#1}}
+
+
+%from Yuan
+\def\<{\langle}
+\def\>{\rangle}
+\def\l{\mathcal{L}}
+\def\k{\mathcal{K}}
+\def\E{\mathcal{E}}
+\def\G{\mathcal{G}}
+\def\H{\mathcal{H}}
+\def\R{\mathcal{R}}
+\def\supp{\textrm{supp}}
+\def\qmc {\color{red}}
+\def\dtmc {\color{black}}
+\newcommand{\ysim}[1]{\stackrel{#1}\sim}
+\def\z{\mathbf{0}}
+\newcommand{\TRANDA}[3]{#1\xrightarrow{#2}_{{\sf D}}#3}
+\def\pdist{\mathit{pDist}}
+\def\supp{\mathit{supp}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\begin{document}%
+First, let us fix some notations: for a super-operator $\e$ on a Hilbert space $\h$, we denote by
+\begin{itemize}
+\item $\alpha(\e)$ the one-shot zero-error capacity of $\e$;
+\item $\beta(\e)$ the sum of all periodicities of BSCCs of $\e$;
+\item $\gamma(\e)$  the number of BSCCs of $\e$ in $\h$.
+\end{itemize}
+Furthermore, let $M=\sum_{i}E_{i}\otimes E_{i}^{*}$ be the matrix representation of $\mathcal{E}$ where $E_i$s are the Kraus operators of $\e$. Let $M=SJS^{-1}$ be the Jordan decomposition of $M$, where
+\begin{eqnarray*}
+J=\sum_{k=1}^{K}\lambda_{k}P_k+N_k,
+\end{eqnarray*}
+$N_{k}^{d_k}=0$ for some $d_k>0$, $N_{k}P_{k}=P_{k}N_{k}=N_{k}, P_{k}P_{l}=\delta_{kl}P_{k}, \textrm{tr}(P_{k})=d_k$, and  $\sum_{k}P_{k}=I$. Let
+\begin{eqnarray}
+J_{\infty}& := &\sum_{k:\lambda_{k}=1}P_{k} \label{eq:infty}\\
+J_{\phi}& := &\sum_{k:|\lambda_{k}|=1}P_{k}, \label{eq:ephi}
+\end{eqnarray}
+and denote by
+\begin{itemize}
+\item $\e_\infty$ the super-operator with the matrix representation $SJ_{\infty} S^{-1}$. 
+%Then $\e_\infty = \lim_{N\rightarrow \infty} \frac{1}{N} \sum_{n=1}^N \e^n$;
+\item $\e_\phi $ the super-operator with the matrix representation $SJ_{\phi} S^{-1}$. 
+\end{itemize}
+
+\begin{theorem}
+$\alpha(\E_{\phi})=\beta(\E)$
+\end{theorem}
+{\it Proof.}
+If $\G$ is irreducible and aperiodic, $\E_{\phi}(\rho)=\lim_{n\rightarrow\infty}\E^{n}(\rho)=\rho^{*}$ for all $\rho\in D(\H)$ where $\rho^{*}$ is the stationary state. So $\alpha(\E_{\phi})=1=\beta(\E)$.\\\\
+
+If $\G$ is irreducible and $d$-periodic ($d>1$), by Theorem 6.6 in \cite{wolf2012quantum}, 
+\begin{eqnarray*}
+\H=C_{1}\oplus\cdots\oplus C_{d}
+\end{eqnarray*}
+where $C_{i}$ is a BSCC of $\G^{d}=(\H,\E^{d})$. By the construction of $\E_{\phi}$, $\E_{\phi}=\lim_{n\rightarrow\infty}\E^{dn}$ and by the compactness of $D(C_{i})$, $C_{i}$ is an invariant subspace under $\E_{\phi}$.\\
+
+Since $(C_{k},\E^{d}|_{C_{k}} )$  is irreducible and aperiodic where $\E|_{C_{k}}$ is the restriction of $\E$ on $C_{k}$, defined by $\E|_{C_{k}}(\rho)=P_{C_{k}}\E(\rho)P_{C_{k}} $ for all $\rho \in D(\H)$. By $\E_{\phi}\circ\E_{\phi}=\E_{\phi}$, for $d\geq k\geq1$
+\begin{eqnarray*}
+\lim_{n\rightarrow \infty}\E^{dn}(\rho)=\E_{\phi}(\rho)=\E_{\phi}\circ\E_{\phi}(\rho) \ \forall \rho \in D(C_{k})
+\end{eqnarray*}
+Therefore, $\E_{\phi}(\rho)$ is the unique stationary state of $\E_{\phi}$ with $\supp(\E_{\phi}(\rho))=C_{k}$, that is $C_{k}$ is a BSCC of $(\H,\E_{\phi})$. As $\{C_{k}\}$ are orthogonal to each other, $\alpha(\E_{\phi})\geq d$.\\
+
+If $\alpha(\E_{\phi})=N>d$, there exist $N$ pure states $\{|\psi_{i}\rangle\}_{i=1}^{N}$ such that $\{\E_{\phi}(|\psi_{i}\rangle\langle \psi _{i}|)\}_{i=1}^{N}$ are orthogonal to each other. By $\E_{\phi}\circ\E_{\phi}=\E_{\phi}$, $\supp(\E_{\phi}(|\psi_{i}\rangle\langle \psi_{i}|))$ is an invariant subspace of $(\H,\E_{\phi})$, that is $(\H,\E_{\phi})$ has at least $N$ BSCCs, which contradicts it only has $d$ BSCCs, by Theorem 6 in  \cite{ying2013reachability}. Therefore $\alpha(\E_{\phi})=d=\beta(\E)$.\\
+
+For the general case, a given quantum Markov chain $(\H,\E)$, $\H$ can be decomposed into the direct sum of some BSCCs and a transient subspace:
+\begin{eqnarray*}
+\H=B_{1}\oplus\cdots \oplus B_{n}\oplus T_{\E}
+\end{eqnarray*}
+where $T_{\E}$ is the transient subspace. It is easy to check that $T_{\E}$ is also a transient subspace of $(\H,\E_{\phi})$.
+And $B_{i}$ can further be decomposed according to the periodicity of it:
+\begin{eqnarray*}
+B_{i}=B_{i1}\oplus\cdots \oplus B_{id_{i}}
+\end{eqnarray*}
+where $d_{i}$ is the periodicity of $B_{i}$.\\
+
+As $\mathcal{G}_i=(B_{i},\E|_{B_{i}})$ is irreducible and by the above proof, we have that $\alpha(\E_{\phi})\geq \beta(\E)=\sum_{i}d_{i}$. Furthermore, $\mathcal{G}_{ij}=(B_{ij},\E^{d_{i}}|_{B_{ij}})$ is irreducible and aperiodic. By the same argument above, $(\H,\E_{\phi})$ has $\beta(\E)$ BSCCs.
+If $\alpha(\E_{\phi})=M>\beta(\E)$, there exist $M$ pure states $\{|\psi_{i}\rangle\}_{i=1}^{M}$ such that $\{\E_{\phi}(|\psi_{i}\rangle\langle \psi _{i}|)\}_{i=1}^{M}$ are orthogonal to each other. By $\E_{\phi}\circ\E_{\phi}=\E_{\phi}$, $\supp(\E_{\phi}(|\psi_{i}\rangle\langle \psi_{i}|))$ is an invariant subspace of $(\H,\E_{\phi})$, that is $(\H,\E_{\phi})$ has at least $M$ BSCCs, which contradicts it only has $d$ BSCCs, by Theorem 6 in  \cite{ying2013reachability}. 
+
+Therefore, by the above proof, we have that $\alpha(\E_{\phi})=\beta(\E)$.
+\hfill $\Box$\\
+
+By the above result and simple analysis, we can conclude the relationship among the three numbers, $\gamma(\E)$,$\beta(\E)$ and $\alpha(\E)$.
+\begin{lemma}\label{Inequa}
+\begin{eqnarray*}
+&(1)&\gamma(\E)\leq\beta(\E)\leq\alpha(\E)\\
+&(2)&\gamma(\E)=\gamma(\E_{\infty})=\beta(\E_{\infty})=\alpha(\E_{\infty})\leq\textnormal{tr}(J_{\infty})\\
+&(3)&\beta(\E)=\gamma(\E_{\phi})=\beta(\E_{\phi})=\alpha(\E_{\phi})\leq \textnormal{tr}(J_{\phi})
+\end{eqnarray*}
+Moreover, the equality holds of $(2)$ if and only if the BSCCs decomposition of $\E$ is unique and  the equality holds of $(3)$ if and only if the periodicity decomposition of $\E$ is unique
+\end{lemma}
+Now we give a concrete example to show the two inequalities in Lemma 1 hold strictly.
+\begin{example}
+Consider a quantum Markov chain $\G=(\H,\E)$ with state space $\H=span\{|0\rangle,\cdots,|3\rangle\}$ and the super-operator
+\begin{eqnarray*}
+\E=\sum_{i=1}^{4}E_{i}\cdot E_{i}^\dagger
+\end{eqnarray*}
+where 
+\begin{eqnarray*}
+E_{1}=\frac{1}{\sqrt{2}}(|0\rangle\langle 0+1|+|2\rangle\langle 2+3|)\\
+E_{2}=\frac{1}{\sqrt{2}}(|0\rangle\langle 0-1|+|2\rangle\langle 2-3|)\\
+E_{3}=\frac{1}{\sqrt{2}}(|1\rangle\langle 0+1|+|3\rangle\langle 2+3|)\\
+E_{4}=\frac{1}{\sqrt{2}}(|0\rangle\langle 0-1|+|3\rangle\langle 2-3|)\\
+\end{eqnarray*}
+and 
+\begin{eqnarray*}
+|0\pm 1\rangle=(|0\rangle \pm|1\rangle)/\sqrt{2} \ and  \ |2\pm 3\rangle=(|2\rangle \pm |3\rangle)/\sqrt{2}
+\end{eqnarray*}
+ It is easy to see that $\alpha(\E)=\beta(\E)=\gamma(\E)=2$ and by computing the eigenvalue, 1 is the only eigenvalue of $\E$ with multiplicity 4, other than 0. So $\tr(J_{\phi})=tr(J_{\infty})=4$.
+\end{example}
+\begin{theorem}
+\begin{eqnarray*}
+\inf_{n}\alpha(\E^{n})=\lim_{n\rightarrow \infty}\alpha(\E^n)=\beta(\E)
+\end{eqnarray*}
+\end{theorem}
+{\it Proof.}$\{\alpha(\E^n)\}$ is a decreasing sequence and $\alpha(\E^n)\geq 1$ for all $n\geq 1$, so $\lim_{n\rightarrow \infty}\alpha(\E^n)$ exists and $\inf_{n}\alpha(\E^{n})=\lim_{n\rightarrow \infty}\alpha(\E^n)$. By Proposition 6.3 in \cite{wolf2012quantum}, there exists an increasing sequence $\{n_{i}\}$ such that $\E_{\phi}=\lim_{i\rightarrow \infty}\E^{n_{i}}$. Now we can claim that $\lim_{i\rightarrow \infty}\alpha(\E^{n_{i}})=\alpha(\E_{\phi})$ and $\alpha(\E_{\phi})=\beta(\E)$, so we have $\lim_{n\rightarrow \infty}\alpha(\E^n)=\beta(\E)$.
+\hfill $\Box$
+
+For the meaning of Theorem 2, let us consider the following scenario: in quantum communication over long distances ($\geq 1000$ km), Alice in Beijing wants to send messages to Bob in Sydney. Due to fiber attenuation and operation errors accumulated over the entire communication distance, they can not communicate with each other directly. Alice must firstly send the message to some quantum repeater, and then the repeater resend it to another one without local operations. After $n-1$ quantum repeaters, the message can be gotten by Bob. $\alpha(\E^n)$ can be regarded as the zero-error capacity of this process and   Theorem 2 shows when $n$ is large enough, $\beta(\E)$ is the zero-error capacity of this process.\\
+
+Now we consider the non-commutative confusability graph of $\E$, defined in \cite{duan3013zero-error},
+\begin{eqnarray*}
+S=span\{E_{i}^{\dagger}E_{j}:i,j\}
+\end{eqnarray*}
+The authors show $\alpha(E)$ is only dependent on $S$ and call $\alpha(\E)$  the independent number of $S$. By Theorem 1 and 2, we can see that $\lim_{n\rightarrow \infty}\alpha(\E^n)$ is only dependent on the non-commutative confusability graph of $\E_{\phi}$.
+\begin{theorem}\label{Correct_E}
+$\alpha(\E)=\max_{X\subseteq \H}\gamma(\R_{P}\circ \E)=\max_{X\subseteq \H}\beta(\R_{P}\cdot \E)$, where $P$ is projector onto $X$ and $R_{P}=\sum_{i}(PE_{i}^{\dagger}\E(P)^{-\frac{1}{2}})\cdot(\E(P)^{-\frac{1}{2}}E_{i}P)$.
+\end{theorem}
+For proving Theorem \ref{Correct_E}, we need some lemmas firstly. 
+\begin{lemma}\label{R}
+If $\f$ is a CP map with $\f=\sum_{i}F_{i}\cdot F_{i}^{\dagger}$ and $\sum_{i}F_{i}^{\dagger}F_{i}\leq I$, then for any Hermitian matrix $A$, 
+\begin{eqnarray*}
+\| \f(A)\|_{1}\leq \|A\|_{1}
+\end{eqnarray*}
+{\it proof.}Let $\f(A)=Q_{+}-Q_{-}$ and $A=P_{+}-P_{-}$ be decompositions into orthogonal parts $Q_{\pm}>0$ and $P_{\pm}>0$. By projecting the equation  $Q_{+}-Q_{-}=\f(P_{+}-P_{-})$ onto the support space of $Q_{+}$ ( or $Q_{-}$),
+\begin{eqnarray*}
+\tr(Q_{\pm})\leq \tr(\f(P_{\pm}))\leq(P_{\pm}).
+\end{eqnarray*}
+ Therefore, $\| \f(A)\|_{1}\leq \|A\|_{1}$.
+\hfill $\Box$
+\end{lemma}
+\begin{lemma}\label{R_inequa}
+For any subspace $X$ of $\H$, $\alpha(\E)\geq\alpha(\R_{P}\circ \E)$ where $R_{P}$ is defined in Theorem \ref{Correct_E}.
+\end{lemma}
+{\it Proof.}By Lemma \ref{R}, it is easy to see that $R_{P}$ is contractive. So for any states $\rho,\sigma\in D(\H)$,  
+\begin{eqnarray*}
+\|\rho-\sigma\|_{1} \geq\| \E(\rho-\sigma)\|_{1}\geq \| \R\circ \E(\rho-\sigma)\|_{1}
+\end{eqnarray*}
+ By the above inequality and the definition of $\alpha(\E)$, we can conclude that $\alpha(\E)\geq\alpha(\R_{P}\circ \E)$
+\hfill $\Box$\\
+\\
+
+Now we can prove Theorem \ref{Correct_E}\\\\
+{\it Proof.}By Lemma \ref{Inequa} and Lemma \ref{R_inequa}, $\alpha(\E)\geq\alpha(R_{p}\circ \E)\geq \beta(\R_{P}\circ\E)\geq\gamma(\R_{P}\circ\E)$. Let $n=\alpha(\E)$, then we can find $n$ states $\{\rho_{i}\}_{i=1}^{n}$ such that $\{\E(\rho_{i})\}_{i=1}^{n}$ are mutually orthogonal. Then let $C$ be the convex set of $\{\rho_{i}\}_{i=1}^{n}$ and $P$ is the projector onto the support space of $C$. By Theorem 1 and Theorem 2 in \cite{blume2008characterizing}, $C$ is isometric to a subset of the fixed states of $R_{P}\circ \E$, which means $\alpha(\E)\leq \gamma(\R_{P}\circ\E)$. Therefore $\alpha(\E)=\max_{X\subseteq\H} \beta(\R_{P}\circ\E)=\max_{X\subseteq\H} \gamma(\R_{P}\circ\E)$. 
+\hfill $\Box$
+\begin{thebibliography}{5}
+\bibitem{wolf2012quantum}
+M.Wolf, Michael (2012). Quantum channels and operations: guided tour. unpublished.
+\bibitem{ying2013reachability}
+Ying, S., Feng, Y., Yu, N. and Ying, M., 2013. Reachability probabilities of quantum Markov chains. In CONCUR 2013–Concurrency theoremry (pp. 334-348). Springer Berlin Heidelberg.
+\bibitem{duan3013zero-error}
+Duan, R., Severini, S. and Winter, A., 2013. Zero-error communication via quantum channels, noncommutative graphs, and a quantum Lovász number. Information Theory, IEEE Transactions on, 59(2), pp.1164-1174.
+\bibitem{blume2008characterizing}
+Blume-Kohout, R., Ng, H.K., Poulin, D. and Viola, L., 2008. Characterizing the structure of preserved information in quantum processes. Physical review letters, 100(3), p.030501.
+\end{thebibliography}
+\end{document}
